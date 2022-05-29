@@ -1,0 +1,12 @@
+logging:
+  level:
+    org:
+      zalando:
+        logbook: TRACE
+
+spring:
+#  config:
+#    activate:
+#      on-profile: blockhound
+#  profiles:
+#    active: blockhound
