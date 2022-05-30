@@ -17,7 +17,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation("org.zalando:logbook-spring-boot-webflux-autoconfigure:2.14.0")
     implementation("org.zalando:logbook-netty:2.14.0")
-    implementation('io.projectreactor.tools:blockhound:1.0.6.RELEASE')
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -26,11 +25,20 @@ dependencies {
     runtimeOnly 'io.r2dbc:r2dbc-h2'
     // runtimeOnly 'org.postgresql:r2dbc-postgresql'
     // runtimeOnly 'org.postgresql:postgresql'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
-    // testImplementation('io.projectreactor.tools:blockhound-junit-platform:1.0.6.RELEASE')
+
+
+    testImplementation(enforcedPlatform("org.junit:junit-bom:5.8.2")) // JUnit 5 BOM
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    testImplementation 'io.projectreactor.tools:blockhound-junit-platform:1.0.6.RELEASE'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    jvmArgs "-XX:+AllowRedefinitionToAddDeleteMethods"
 }
