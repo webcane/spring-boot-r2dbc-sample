@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.Duration;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import reactor.test.StepVerifier;
 
-//@Disabled
 @DataR2dbcTest
 @Import(TestConfig.class)
 class CustomerRepositoryTest {
@@ -40,22 +38,9 @@ class CustomerRepositoryTest {
   }
 
   @Test
-  void findAll() {
+  void testFindAll() {
     Customer customer1 = Customer.builder().firstName("test1").lastName("test1").build();
     Customer customer2 = Customer.builder().firstName("test2").lastName("test2").build();
-//    this.template.insert(customer)
-//        .log()
-//        .then()
-//        .thenMany(
-//            this.customerRepo.findAll()
-//        )
-//        .log()
-//        .as(StepVerifier::create)
-//        .consumeNextWith(c -> {
-//          assertEquals("test", c.getFirstName());
-//          assertEquals("test", c.getLastName());
-//        })
-//        .verifyComplete();
 
     template.insert(Customer.class)
         .using(customer1)
@@ -76,7 +61,7 @@ class CustomerRepositoryTest {
   }
 
   @Test
-  void findByLastName() {
+  void testFindByLastName() {
     Customer customer1 = Customer.builder().firstName("test1").lastName("test1").build();
     Customer customer2 = Customer.builder().firstName("test2").lastName("test2").build();
 
