@@ -31,8 +31,6 @@ dependencies {
 
 
     testImplementation(enforcedPlatform("org.junit:junit-bom:5.8.2")) // JUnit 5 BOM
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     testImplementation 'io.projectreactor.tools:blockhound-junit-platform:1.0.6.RELEASE'
